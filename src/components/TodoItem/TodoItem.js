@@ -13,7 +13,7 @@ class TodoItem extends Component {
         return (
             <div className={'TodoItem' + this.state.done ? ' Done' : ''}>
                 <input type="checkbox" defaultChecked={this.state.done} onChange={this.props.changeHandler} />
-                {this.state.text}
+                {this.state.text} <span className="RemoveButton" onClick={this.props.removeHandler}>&times;</span>
             </div>
         );
     }

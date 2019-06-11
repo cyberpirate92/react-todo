@@ -12,10 +12,22 @@ class TodoList extends Component {
     }
 
     itemChangeHandler(itemIndex) {
-        let currState = this.state.list;
-        currState[itemIndex].done = !currState[itemIndex].done;
+        /** @type {Array} */
+        let curState = this.state.list;
+        curState[itemIndex].done = !curState[itemIndex].done;
         this.setState({
-            list: currState,
+            list: curState,
+        });
+    }
+
+    itemRemoveHandler(itemIndex) {
+        /** @type {Array} */
+        let curState = JSON.parse(JSON.stringify(this.state.list));
+        console.log('Before: ', curState);
+        curState.splice(itemIndex, 1);
+        console.log('After', curState);
+        this.setState({
+            list: curState
         });
     }
 
@@ -24,7 +36,7 @@ class TodoList extends Component {
         return (
             <div className="TodoList">
                 <div>To-Do List {this.state.list.filter(item => item.done === true).length}/{this.state.list.length} Done</div>
-                {this.state.list.map((item, index) => (<TodoItem key={index} done={item.done} text={item.text} changeHandler={() => this.itemChangeHandler(index)}/>))}
+                {this.state.list.map((item, index) => (<TodoItem key={item.id} done={item.done} text={item.text} changeHandler={() => this.itemChangeHandler(index)} removeHandler={() => this.itemRemoveHandler(index)} />))}
             </div>
         );
     }

@@ -9,12 +9,15 @@ class App extends Component {
     todoList: [{
       done: false,
       text: 'Item #1',
+      id: 1
     }, {
       done: false,
       text: 'Item #2',
+      id: 2,
     }, {
       done: false,
       text: 'Item #3',
+      id: 3,
     }]
   };
 
