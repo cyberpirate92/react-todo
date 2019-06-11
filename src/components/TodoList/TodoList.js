@@ -23,9 +23,7 @@ class TodoList extends Component {
     itemRemoveHandler(itemIndex) {
         /** @type {Array} */
         let curState = JSON.parse(JSON.stringify(this.state.list));
-        console.log('Before: ', curState);
         curState.splice(itemIndex, 1);
-        console.log('After', curState);
         this.setState({
             list: curState,
         });
@@ -59,12 +57,23 @@ class TodoList extends Component {
         }
     }
 
+    removeAllCompleted = () => {
+        /** @type {Array} */
+        let curState = JSON.parse(JSON.stringify(this.state.list));
+        if (curState && curState.length > 0) {
+            curState = curState.filter(item => !item.done);
+            this.setState({
+                list: curState,
+            });
+        }
+    }
+
     render() {
-        console.log('Rendering TodoList');
         return (
             <div className="TodoList row">
                 <div className="ListSummary col-12 h5">
-                    {this.state.list.filter(item => item.done === true).length}/{this.state.list.length} Done
+                    <span>{this.state.list.filter(item => item.done === true).length}/{this.state.list.length} Done</span>
+                    <button className="btn btn-warning float-right" disabled={this.state.list && this.state.list.filter(i => i.done === true).length === 0} onClick={this.removeAllCompleted}>clear completed</button>
                 </div>
                 <div className="ListInput col-12">
                     <div className="input-group">
