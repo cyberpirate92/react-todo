@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './Body.css';
 
 class Body extends Component {
     render() {
         return (
-            <div>
+            <div className="col-12">
                 {this.props.children}
             </div>
         );

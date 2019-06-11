@@ -8,26 +8,22 @@ class App extends Component {
   state = {
     todoList: [{
       done: false,
-      text: 'Item #1',
+      text: 'Sample Item #1',
       id: 1
     }, {
       done: false,
-      text: 'Item #2',
+      text: 'Sample Item #2',
       id: 2,
-    }, {
-      done: false,
-      text: 'Item #3',
-      id: 3,
     }]
   };
 
   render() {
     return (
-      <div className="App">
-        <div className="AppHeader">
-          ToDoList
+      <div className="App row">
+        <div className="AppHeader col-12">
+          <span className="display-4">ToDoList</span>
         </div>
-        <div className="AppBody">
+        <div className="AppBody col-12">
           <Body>
             <TodoList list={this.state.todoList} />
           </Body>

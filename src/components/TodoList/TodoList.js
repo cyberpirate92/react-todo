@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TodoItem from '../TodoItem/TodoItem';
 
 class TodoList extends Component {
@@ -8,8 +8,6 @@ class TodoList extends Component {
         this.state = {
             list: this.props.list,
         };
-        // this.itemChangeHandler = this.itemChangeHandler.bind(this);
-        // this.itemRemoveHandler = this.itemRemoveHandler.bind(this);
         this.addTodoItem = this.addTodoItem.bind(this);
     }
 
@@ -64,10 +62,25 @@ class TodoList extends Component {
     render() {
         console.log('Rendering TodoList');
         return (
-            <div className="TodoList">
-                <div>{this.state.list.filter(item => item.done === true).length}/{this.state.list.length} Done</div>
-                <input type="text" id="todoInput" placeholder="Add new item..."/> <button onClick={this.addClickHandler}>Add</button>
-                {this.state.list.map((item, index) => (<TodoItem key={item.id} done={item.done} text={item.text} changeHandler={() => this.itemChangeHandler(index)} removeHandler={() => this.itemRemoveHandler(index)} />))}
+            <div className="TodoList row">
+                <div className="ListSummary col-12 h5">
+                    {this.state.list.filter(item => item.done === true).length}/{this.state.list.length} Done
+                </div>
+                <div className="ListInput col-12">
+                    <div className="input-group">
+                        <input className="form-control" type="text" id="todoInput" placeholder="Add new item..." />
+                        <div className="input-group-append">
+                            <button className="btn btn-primary" onClick={this.addClickHandler}>Add</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 mt-4">
+                    {
+                        this.state.list.map((item, index) => (
+                            <TodoItem key={item.id} done={item.done} text={item.text} changeHandler={() => this.itemChangeHandler(index)} removeHandler={() => this.itemRemoveHandler(index)} />
+                        ))
+                    }
+                </div>
             </div>
         );
     }

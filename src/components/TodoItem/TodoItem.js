@@ -1,19 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import './TodoItem.css';
+
 class TodoItem extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            done: this.props.done || false,
-            text: this.props.text || '',
-        }
-    }
-
     render() {
         return (
-            <div className={'TodoItem' + this.state.done ? ' Done' : ''}>
-                <input type="checkbox" defaultChecked={this.state.done} onChange={this.props.changeHandler} />
-                {this.state.text} <span className="RemoveButton" onClick={this.props.removeHandler}>&times;</span>
+            <div className={this.props.done === true ? 'TodoItem Done col-12' : 'TodoItem col-12'}>
+                <div className='form-check inline-block'>
+                    <input type="checkbox" className="form-check-input" defaultChecked={this.props.done} onChange={this.props.changeHandler} />
+                    <div className="form-check-label">
+                        <span>{this.props.text}</span>
+                    </div>
+                </div>
+                <div className="RemoveButton" onClick={this.props.removeHandler}>&times;</div>
             </div>
         );
     }

@@ -1,0 +1,30 @@
+.RemoveButton {
+    font-weight: bold;
+    display: none;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+.RemoveButton:hover {
+    background-color: #e00;
+    color: #fff !important;
+}
+.TodoItem:hover .RemoveButton {
+    display: inline-block !important;
+    color: red;
+}
+.TodoItem {
+    font-size: 1em;
+    display: inline-block;
+}
+.ListSummary {
+    font-size: 1.3em;
+}
+.inline-block {
+    display: inline-block;
+}
+.Done .form-check-label {
+    text-decoration: line-through;
+}
