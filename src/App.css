@@ -1,0 +1,12 @@
+.App {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.AppHeader {
+  background-color: #000;
+  color: #eee;
+  padding: 1rem;
+  font-size: 2rem;
+}
+.AppBody {
+  padding: 1rem;
+}
