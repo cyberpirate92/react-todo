@@ -2,6 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://cyberpirate92.github.io/react-todo/",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
