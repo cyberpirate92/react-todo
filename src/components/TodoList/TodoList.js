@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import TodoItem from '../TodoItem/TodoItem';
+import {writeToLocalStorage} from '../../utils';
+import {LOCAL_STORAGE_KEY} from '../../constants';
 
 class TodoList extends Component {
 
@@ -18,6 +20,7 @@ class TodoList extends Component {
         this.setState({
             list: curState,
         });
+        this.saveList(curState);
     }
 
     itemRemoveHandler(itemIndex) {
@@ -27,6 +30,7 @@ class TodoList extends Component {
         this.setState({
             list: curState,
         });
+        this.saveList(curState);
     }
 
     addTodoItem(todoText) {
@@ -42,6 +46,7 @@ class TodoList extends Component {
             this.setState({
                 list: curState,
             });
+            this.saveList(curState);
         }
     }
 
@@ -65,7 +70,18 @@ class TodoList extends Component {
             this.setState({
                 list: curState,
             });
+            this.saveList(curState);
         }
+    }
+
+    onKeyDownHandler = (event) => {
+        if (event && event.key === 'Enter') {
+            this.addClickHandler();
+        }
+    }
+
+    saveList = (list) => {
+        return writeToLocalStorage(LOCAL_STORAGE_KEY, list);
     }
 
     render() {
@@ -77,7 +93,7 @@ class TodoList extends Component {
                 </div>
                 <div className="ListInput col-12">
                     <div className="input-group">
-                        <input className="form-control" type="text" id="todoInput" placeholder="Add new item..." />
+                        <input className="form-control" type="text" id="todoInput" onKeyDown={this.onKeyDownHandler} placeholder="Add new item..." />
                         <div className="input-group-append">
                             <button className="btn btn-primary" onClick={this.addClickHandler}>Add</button>
                         </div>
